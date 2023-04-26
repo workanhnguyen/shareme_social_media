@@ -1,0 +1,10 @@
+CODE TO INSTALL PACKAGE NEEDED TO CONNECT BACKEND TO FRONTEND
+
+npm install @sanity/client 
+npm install @sanity/image-url
+npm install react-icons
+npm install react-loader-spinner
+npm install react-masonry-css
+npm install react-router-dom
+npm install uuid
+npm install react-google-login --legacy-peer-deps
