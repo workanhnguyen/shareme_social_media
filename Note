@@ -18,3 +18,5 @@ Client secret: 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
 
 Create random images link:
 'https://source.unsplash.com/1600x900/?nature,photography,technology';
+
+Create file name: '_redirects' and add this code: /* /index.html 200
