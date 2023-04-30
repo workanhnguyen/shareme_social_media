@@ -14,7 +14,7 @@ const Pin = ({ pin: { postedBy, imgUrl, _id, destination, save }}) => {
   const navigate = useNavigate();
 
   const user = fetchUser();
-  const alreadySaved = !!(save?.filter((item) => item.postedBy._id === user?.sub))?.length;
+  const alreadySaved = !!(save?.filter((item) => item?.postedBy?._id === user?.sub))?.length;
 
   const savePin = (id) => {
     if (!alreadySaved) {
