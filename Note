@@ -20,3 +20,8 @@ Create random images link:
 'https://source.unsplash.com/1600x900/?nature,photography,technology';
 
 Create file name: '_redirects' and add this code: /* /index.html 200
+
+IMPORTANT:
+1. Upload build folder to Netlify
+2. Add domain name of the app uploaded to Netlify to CORS Orgin of Sanity
+3. Go to Google Cloud API in this link 'https://console.cloud.google.com/apis/'
