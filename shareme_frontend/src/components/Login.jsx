@@ -1,13 +1,34 @@
 import React from 'react'
-import GoogleLogin from 'react-google-login';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { useNavigate } from 'react-router-dom';
-import { FcGoogle } from 'react-icons/fc';
+import jwt_decode from 'jwt-decode';
 
 import share from '../assets/share.mp4';
-import logo from '../assets/logo.png';
 import logowhite from '../assets/logowhite.png';
+import { client } from '../client';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const responseGoogle = (response) => {
+
+    const decoded = jwt_decode(response.credential);
+    localStorage.setItem('user', JSON.stringify(decoded));
+
+    const { name, sub, picture } = decoded;
+    const doc = {
+      _id: sub,
+      _type: 'user',
+      username: name,
+      imgUrl: picture,
+    };
+
+    client.createIfNotExists(doc)
+    .then(() => {
+      navigate('/', { replace: true })
+    })
+    console.log(decoded)
+  };
+
   return (
     <div className='flex justify-start items-center flex-col h-screen'>
       <div className='relative w-full h-full'>
@@ -27,18 +48,12 @@ const Login = () => {
           </div>
 
           <div className='shadow-2xl'>
-            <GoogleLogin
-              clientId=''
-              render={(renderProps) => (
-                <button
-                  type='button'
-                  className='bg-mainColor'
-                >
-                  <FcGoogle className='mr-4'/>
-                  Sign in with Google
-                </button>
-              )} 
-            />
+            <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_API_TOKEN}>
+              <GoogleLogin
+                onSuccess={(response) => responseGoogle(response)}
+                onError={(response) => responseGoogle(response)}
+              />
+            </GoogleOAuthProvider>
           </div>
         </div>
       </div>

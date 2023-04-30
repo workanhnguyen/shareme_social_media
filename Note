@@ -1,3 +1,7 @@
+This project use React Google Login, but the latest process is using
+Google OAuth, let's use OAuth instead of this.
+
+
 CODE TO INSTALL PACKAGE NEEDED TO CONNECT BACKEND TO FRONTEND
 
 npm install @sanity/client 
@@ -7,4 +11,7 @@ npm install react-loader-spinner
 npm install react-masonry-css
 npm install react-router-dom
 npm install uuid
-npm install react-google-login --legacy-peer-deps
+npm install @react-oauth/google jwt-decode
+
+Client ID: 454743079793-f6lulsherre93abq03p702ggpgcq5fs0.apps.googleusercontent.com
+Client secret: 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
